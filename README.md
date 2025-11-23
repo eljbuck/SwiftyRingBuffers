@@ -25,3 +25,4 @@ rb.write(4.0)  // throws error
 
 - Found it annoying that you cannot allocate an uninitialized array of some fixed size (hence passing `initialValue` into constructor)
 - The array's under-the-hood capacity is actually `size + 1` to ensure `readPtr == writePtr` when empty
+- Next up: do it in a struct (more swifty?)
