@@ -1,0 +1,5 @@
+version: "Apple Swift version 5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)"
+options: "e77cd1348941805a6650be4281e7d442"
+build_time: [1763883279, 124758000]
+inputs:
+  "/Users/ethanbuck/Documents/personal/swift/RingBuffers/src/RingBufferCore/RingBufferErrors.swift": [1763882121, 713554892]

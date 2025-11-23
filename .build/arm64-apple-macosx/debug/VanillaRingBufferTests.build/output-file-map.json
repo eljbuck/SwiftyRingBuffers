@@ -1,0 +1,11 @@
+{
+  "": {
+    "swift-dependencies": "/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/VanillaRingBufferTests.build/master.swiftdeps"
+  },
+  "/Users/ethanbuck/Documents/personal/swift/RingBuffers/Tests/VanillaRingBufferTests/VanillaRingBufferTests.swift": {
+    "dependencies": "/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/VanillaRingBufferTests.build/VanillaRingBufferTests.d",
+    "object": "/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/VanillaRingBufferTests.build/VanillaRingBufferTests.swift.o",
+    "swiftmodule": "/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/VanillaRingBufferTests.build/VanillaRingBufferTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/VanillaRingBufferTests.build/VanillaRingBufferTests.swiftdeps"
+  }
+}

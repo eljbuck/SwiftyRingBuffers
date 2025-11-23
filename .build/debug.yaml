@@ -1,0 +1,110 @@
+client:
+  name: basic
+  file-system: device-agnostic
+tools: {}
+targets:
+  "PackageStructure": ["<PackageStructure>"]
+  "RingBufferCore-debug.module": ["<RingBufferCore-debug.module>"]
+  "RingBuffersPackageTests-debug.test": ["<RingBuffersPackageTests-debug.test>"]
+  "VanillaRingBuffer-debug.module": ["<VanillaRingBuffer-debug.module>"]
+  "VanillaRingBufferTests-debug.module": ["<VanillaRingBufferTests-debug.module>"]
+  "main": ["<RingBufferCore-debug.module>","<VanillaRingBuffer-debug.module>"]
+  "test": ["<RingBufferCore-debug.module>","<RingBuffersPackageTests-debug.test>","<VanillaRingBuffer-debug.module>","<VanillaRingBufferTests-debug.module>"]
+default: "main"
+nodes:
+  "/Users/ethanbuck/Documents/personal/swift/RingBuffers/Tests/VanillaRingBufferTests/":
+    is-directory-structure: true
+    content-exclusion-patterns: [".git",".build"]
+  "/Users/ethanbuck/Documents/personal/swift/RingBuffers/src/RingBufferCore/":
+    is-directory-structure: true
+    content-exclusion-patterns: [".git",".build"]
+  "/Users/ethanbuck/Documents/personal/swift/RingBuffers/src/VanillaRingBuffer/":
+    is-directory-structure: true
+    content-exclusion-patterns: [".git",".build"]
+commands:
+  "/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/RingBufferCore.build/sources":
+    tool: write-auxiliary-file
+    inputs: ["<sources-file-list>","/Users/ethanbuck/Documents/personal/swift/RingBuffers/src/RingBufferCore/RingBufferErrors.swift"]
+    outputs: ["/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/RingBufferCore.build/sources"]
+    description: "Write auxiliary file /Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/RingBufferCore.build/sources"
+
+  "/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/RingBuffersPackageTests.product/Objects.LinkFileList":
+    tool: write-auxiliary-file
+    inputs: ["<link-file-list>","/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/RingBufferCore.build/RingBufferErrors.swift.o","/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/VanillaRingBuffer.build/VanillaRingBuffer.swift.o","/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/VanillaRingBufferTests.build/VanillaRingBufferTests.swift.o"]
+    outputs: ["/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/RingBuffersPackageTests.product/Objects.LinkFileList"]
+    description: "Write auxiliary file /Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/RingBuffersPackageTests.product/Objects.LinkFileList"
+
+  "/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/VanillaRingBuffer.build/sources":
+    tool: write-auxiliary-file
+    inputs: ["<sources-file-list>","/Users/ethanbuck/Documents/personal/swift/RingBuffers/src/VanillaRingBuffer/VanillaRingBuffer.swift"]
+    outputs: ["/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/VanillaRingBuffer.build/sources"]
+    description: "Write auxiliary file /Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/VanillaRingBuffer.build/sources"
+
+  "/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/VanillaRingBufferTests.build/sources":
+    tool: write-auxiliary-file
+    inputs: ["<sources-file-list>","/Users/ethanbuck/Documents/personal/swift/RingBuffers/Tests/VanillaRingBufferTests/VanillaRingBufferTests.swift"]
+    outputs: ["/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/VanillaRingBufferTests.build/sources"]
+    description: "Write auxiliary file /Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/VanillaRingBufferTests.build/sources"
+
+  "/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt":
+    tool: write-auxiliary-file
+    inputs: ["<swift-get-version>","/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"]
+    outputs: ["/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"]
+    always-out-of-date: "true"
+    description: "Write auxiliary file /Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+
+  "<RingBufferCore-debug.module>":
+    tool: phony
+    inputs: ["/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/RingBufferCore.build/RingBufferErrors.swift.o","/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/RingBufferCore.swiftmodule"]
+    outputs: ["<RingBufferCore-debug.module>"]
+
+  "<RingBuffersPackageTests-debug.test>":
+    tool: phony
+    inputs: ["/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/RingBuffersPackageTests.xctest/Contents/MacOS/RingBuffersPackageTests"]
+    outputs: ["<RingBuffersPackageTests-debug.test>"]
+
+  "<VanillaRingBuffer-debug.module>":
+    tool: phony
+    inputs: ["/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/VanillaRingBuffer.build/VanillaRingBuffer.swift.o","/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/VanillaRingBuffer.swiftmodule"]
+    outputs: ["<VanillaRingBuffer-debug.module>"]
+
+  "<VanillaRingBufferTests-debug.module>":
+    tool: phony
+    inputs: ["/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/VanillaRingBufferTests.build/VanillaRingBufferTests.swift.o","/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/VanillaRingBufferTests.swiftmodule"]
+    outputs: ["<VanillaRingBufferTests-debug.module>"]
+
+  "C.RingBufferCore-debug.module":
+    tool: shell
+    inputs: ["/Users/ethanbuck/Documents/personal/swift/RingBuffers/src/RingBufferCore/RingBufferErrors.swift","/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt","/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/RingBufferCore.build/sources"]
+    outputs: ["/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/RingBufferCore.build/RingBufferErrors.swift.o","/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/RingBufferCore.swiftmodule"]
+    description: "Compiling Swift Module 'RingBufferCore' (1 sources)"
+    args: ["/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc","-module-name","RingBufferCore","-emit-dependencies","-emit-module","-emit-module-path","/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/RingBufferCore.swiftmodule","-output-file-map","/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/RingBufferCore.build/output-file-map.json","-parse-as-library","-incremental","-c","@/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/RingBufferCore.build/sources","-I","/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug","-target","arm64-apple-macosx13.0","-swift-version","5","-enable-batch-mode","-index-store-path","/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/index/store","-Onone","-enable-testing","-j10","-DSWIFT_PACKAGE","-DDEBUG","-module-cache-path","/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/ModuleCache","-parseable-output","-parse-as-library","-emit-objc-header","-emit-objc-header-path","/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/RingBufferCore.build/RingBufferCore-Swift.h","-color-diagnostics","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-g","-Xcc","-isysroot","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk","-Xcc","-F","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-Xcc","-fPIC","-Xcc","-g","-package-name","ringbuffers"]
+
+  "C.RingBuffersPackageTests-debug.test":
+    tool: shell
+    inputs: ["/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/RingBufferCore.build/RingBufferErrors.swift.o","/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/VanillaRingBuffer.build/VanillaRingBuffer.swift.o","/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/VanillaRingBufferTests.build/VanillaRingBufferTests.swift.o","/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/RingBuffersPackageTests.product/Objects.LinkFileList"]
+    outputs: ["/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/RingBuffersPackageTests.xctest/Contents/MacOS/RingBuffersPackageTests"]
+    description: "Linking ./.build/arm64-apple-macosx/debug/RingBuffersPackageTests.xctest/Contents/MacOS/RingBuffersPackageTests"
+    args: ["/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc","-L","/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug","-o","/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/RingBuffersPackageTests.xctest/Contents/MacOS/RingBuffersPackageTests","-module-name","RingBuffersPackageTests","-Xlinker","-bundle","-Xlinker","-rpath","-Xlinker","@loader_path/../../../","@/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/RingBuffersPackageTests.product/Objects.LinkFileList","-target","arm64-apple-macosx13.0","-Xlinker","-add_ast_path","-Xlinker","/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/RingBufferCore.swiftmodule","-Xlinker","-add_ast_path","-Xlinker","/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/VanillaRingBuffer.swiftmodule","-Xlinker","-add_ast_path","-Xlinker","/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/VanillaRingBufferTests.swiftmodule","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-g"]
+
+  "C.VanillaRingBuffer-debug.module":
+    tool: shell
+    inputs: ["/Users/ethanbuck/Documents/personal/swift/RingBuffers/src/VanillaRingBuffer/VanillaRingBuffer.swift","/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt","/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/RingBufferCore.swiftmodule","/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/VanillaRingBuffer.build/sources"]
+    outputs: ["/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/VanillaRingBuffer.build/VanillaRingBuffer.swift.o","/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/VanillaRingBuffer.swiftmodule"]
+    description: "Compiling Swift Module 'VanillaRingBuffer' (1 sources)"
+    args: ["/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc","-module-name","VanillaRingBuffer","-emit-dependencies","-emit-module","-emit-module-path","/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/VanillaRingBuffer.swiftmodule","-output-file-map","/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/VanillaRingBuffer.build/output-file-map.json","-parse-as-library","-incremental","-c","@/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/VanillaRingBuffer.build/sources","-I","/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug","-target","arm64-apple-macosx13.0","-swift-version","5","-enable-batch-mode","-index-store-path","/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/index/store","-Onone","-enable-testing","-j10","-DSWIFT_PACKAGE","-DDEBUG","-module-cache-path","/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/ModuleCache","-parseable-output","-parse-as-library","-emit-objc-header","-emit-objc-header-path","/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/VanillaRingBuffer.build/VanillaRingBuffer-Swift.h","-color-diagnostics","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-g","-Xcc","-isysroot","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk","-Xcc","-F","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-Xcc","-fPIC","-Xcc","-g","-package-name","ringbuffers"]
+
+  "C.VanillaRingBufferTests-debug.module":
+    tool: shell
+    inputs: ["/Users/ethanbuck/Documents/personal/swift/RingBuffers/Tests/VanillaRingBufferTests/VanillaRingBufferTests.swift","/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt","/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/VanillaRingBuffer.swiftmodule","/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/VanillaRingBufferTests.build/sources"]
+    outputs: ["/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/VanillaRingBufferTests.build/VanillaRingBufferTests.swift.o","/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/VanillaRingBufferTests.swiftmodule"]
+    description: "Compiling Swift Module 'VanillaRingBufferTests' (1 sources)"
+    args: ["/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc","-module-name","VanillaRingBufferTests","-emit-dependencies","-emit-module","-emit-module-path","/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/VanillaRingBufferTests.swiftmodule","-output-file-map","/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/VanillaRingBufferTests.build/output-file-map.json","-parse-as-library","-incremental","-c","@/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/VanillaRingBufferTests.build/sources","-I","/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug","-target","arm64-apple-macosx13.0","-swift-version","5","-enable-batch-mode","-index-store-path","/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/index/store","-Onone","-enable-testing","-j10","-DSWIFT_PACKAGE","-DDEBUG","-module-cache-path","/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/ModuleCache","-parseable-output","-parse-as-library","-color-diagnostics","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-g","-Xcc","-isysroot","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk","-Xcc","-F","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-Xcc","-fPIC","-Xcc","-g","-package-name","ringbuffers"]
+
+  "PackageStructure":
+    tool: package-structure-tool
+    inputs: ["/Users/ethanbuck/Documents/personal/swift/RingBuffers/Tests/VanillaRingBufferTests/","/Users/ethanbuck/Documents/personal/swift/RingBuffers/src/RingBufferCore/","/Users/ethanbuck/Documents/personal/swift/RingBuffers/src/VanillaRingBuffer/","/Users/ethanbuck/Documents/personal/swift/RingBuffers/Package.swift","/Users/ethanbuck/Documents/personal/swift/RingBuffers/Package.resolved"]
+    outputs: ["<PackageStructure>"]
+    description: "Planning build"
+    allow-missing-inputs: true
+

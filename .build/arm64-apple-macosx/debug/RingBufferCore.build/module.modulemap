@@ -1,0 +1,4 @@
+module RingBufferCore {
+    header "/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/RingBufferCore.build/RingBufferCore-Swift.h"
+    requires objc
+}
