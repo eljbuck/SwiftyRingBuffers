@@ -1,4 +1,0 @@
-module VanillaRingBuffer {
-    header "/Users/ethanbuck/Documents/personal/swift/RingBuffers/.build/arm64-apple-macosx/debug/VanillaRingBuffer.build/VanillaRingBuffer-Swift.h"
-    requires objc
-}
