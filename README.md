@@ -13,12 +13,12 @@ var rb = VanillaRingBuffer<Double>(size: 3, initialValue: 0.0)
 print(rb.size())  // -> 0
 print(rb.isEmpty())  // -> True
 rb.write(1.0)
-print(rb.read())  // 1.0
-print(rb.read())  // throws error
+print(rb.read())  // -> 1.0
+print(rb.read())  // -> throws error
 rb.write(1.0)
 rb.write(2.0)
 rb.write(3.0)
-rb.write(4.0)  // throws error
+rb.write(4.0)  // -> throws error
 ``` 
 
 ### Notes
@@ -38,12 +38,12 @@ This is a Single-Producer Single-Consumer circular buffer that uses the Swift At
 let rb = SPSCRingBuffer<Double>(size: 3)
 print(rb.size())  // -> 0
 rb.write(1.0)
-print(rb.read())  // 1.0
-print(rb.read())  // nil
+print(rb.read())  // -> 1.0
+print(rb.read())  // -> nil
 rb.write(1.0)
 rb.write(2.0)
 rb.write(3.0)
-rb.write(4.0)  // returns false
+rb.write(4.0)  // -> false
 ``` 
 
 #### SPSC
@@ -70,10 +70,38 @@ DispatchQueue.global().async {
     }
 }
 
-// consumed == Array(0..<total)
+// atp, consumed == Array(0..<total)
 ```
 
 ### Notes
 
 - `initialValue` is optional in constructor but must be provided if `T` is a reference type (class) or non-trivial struct
 - feat. optimizations such as: monotonically increasing ptrs with bitmask instead of `%` (requires under-the-hood array size to be rounded to next power of two), `@inline` write/read, non-blocking `read`-on-empty/`write`-on-full, and `UnsafeMutablePointer` for direct memory access
+
+## Installation
+
+Add this package as a dependency in your `Package.swift`:
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/eljbuck/SwiftyRingBuffers.git", from: "1.0.0")
+]
+```
+
+Then add the target to your executable or library:
+
+```swift
+.target(
+    name: "MyApp",
+    dependencies: ["VanillaRingBuffer", "SPSCRingBuffer"]
+)
+```
+
+## Testing
+
+Run the test suite with Swift Package Manager:
+
+
+```bash
+swift test
+```
