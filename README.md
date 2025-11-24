@@ -76,4 +76,4 @@ DispatchQueue.global().async {
 ### Notes
 
 - `initialValue` is optional in constructor but must be provided if `T` is a reference type (class) or non-trivial struct
-- feat. optimizations such as: monotonically increasing ptrs with bitmask instead of `%` (requires under-the-hood array size to be rounded to next power of two), `@inline` write/read, and non-blocking `read`-on-empty/`write`-on-full
+- feat. optimizations such as: monotonically increasing ptrs with bitmask instead of `%` (requires under-the-hood array size to be rounded to next power of two), `@inline` write/read, non-blocking `read`-on-empty/`write`-on-full, and `UnsafeMutablePointer` for direct memory access
