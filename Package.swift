@@ -11,8 +11,16 @@ let package = Package(
         .library(name: "RingBufferCore", targets: ["RingBufferCore"]),
         .library(name: "VanillaRingBuffer", targets: ["VanillaRingBuffer"]),
     ],
-    dependencies: [],
+    dependencies: [
+        .package(url: "https://github.com/apple/swift-atomics.git", from: "1.0.2")
+    ],
     targets: [
+        .target(
+            name: "SPSCRingBuffer",
+            dependencies: [
+                .product(name: "Atomics", package: "swift-atomics")
+            ]
+        ),
         .target(
             name: "RingBufferCore",
             dependencies: []
@@ -25,5 +33,9 @@ let package = Package(
             name: "VanillaRingBufferTests",
             dependencies: ["VanillaRingBuffer"]
         ),
+        .testTarget(
+            name: "SPSCRingBufferTests",
+            dependencies: ["SPSCRingBuffer"]
+        )
     ]
 )
